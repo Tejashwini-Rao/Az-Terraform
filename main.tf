@@ -6,6 +6,11 @@ module "components" {
 
 }
 
+variables "env"{
+
+  env = "dev"
+}
+
 variable "components" {
 
   default = {
@@ -72,6 +77,3 @@ variable "components" {
   }
 }
 
-variable "env" {
-  env = "dev"
-}
