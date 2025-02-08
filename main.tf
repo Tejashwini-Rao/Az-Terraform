@@ -6,7 +6,7 @@ module "components" {
 
 }
 
-variables "env"{
+variable "env"{
 
   env = "dev"
 }
