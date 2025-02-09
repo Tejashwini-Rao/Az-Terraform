@@ -9,6 +9,7 @@ resource "azurerm_network_interface" "main" {
     subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.public.id
+
   }
 }
 
@@ -32,8 +33,8 @@ resource "azurerm_dns_a_record" "main" {
   name                = "${var.component}-${var.env}"
   zone_name           = "devopst77.online"
   resource_group_name = data.azurerm_resource_group.rg.name
-  ttl                 = 300
-  records             = [azurerm_network_interface.main.private_ip_addresses]
+  ttl                 = 10
+  records             = [azurerm_network_interface.main.private_ip_address]
 }
 
 resource "azurerm_virtual_machine" "main" {
