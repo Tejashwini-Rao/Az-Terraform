@@ -27,10 +27,7 @@ output "subnet_id" {
   value = data.azurerm_subnet.subnet
 }
 
-data "azurerm_network_security_group" "main" {
-  name                = "Allow-all"
-  resource_group_name = data.azurerm_resource_group.rg.name
-}
+
 
 output "location" {
   value = data.azurerm_network_security_group.main.location

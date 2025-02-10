@@ -9,9 +9,26 @@ resource "azurerm_network_interface" "main" {
     subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.public.id
-
   }
 }
+
+resource "azurerm_network_security_group" "main" {
+  name                = "${var.component}-${var.env}-nsg"
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+
+  security_rule {
+    name                       = "main"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+  }
 
 
 resource "azurerm_public_ip" "public" {
@@ -25,7 +42,7 @@ resource "azurerm_public_ip" "public" {
 
 resource "azurerm_network_interface_security_group_association" "main" {
   network_interface_id      = azurerm_network_interface.main.id
-  network_security_group_id = data.azurerm_network_security_group.main.id
+  network_security_group_id = azurerm_network_security_group.main.id
 }
 
 
@@ -96,6 +113,7 @@ resource "null_resource" "ansible" {
     ]
   }
 }
+
 
 
 
