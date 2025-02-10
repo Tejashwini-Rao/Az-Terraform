@@ -28,7 +28,3 @@ output "subnet_id" {
 }
 
 
-
-output "location" {
-  value = data.azurerm_network_security_group.main.location
-}
