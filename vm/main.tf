@@ -8,7 +8,7 @@ resource "azurerm_network_interface" "main" {
     name                          = "testconfiguration1"
     subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.public.id
+    public_ip_address_id          = azurerm_public_ip.main.id
   }
 }
 
@@ -31,7 +31,7 @@ resource "azurerm_network_security_group" "main" {
   }
 
 
-resource "azurerm_public_ip" "public" {
+resource "azurerm_public_ip" "main" {
   name                = "${var.component}-ip"
   resource_group_name = data.azurerm_resource_group.rg.name
   location            = data.azurerm_resource_group.rg.location
@@ -102,7 +102,7 @@ resource "null_resource" "ansible" {
       type     = "ssh"
       user     = "testadmin"
       password = "Password1234!"
-      host     = azurerm_public_ip.public.ip_address
+      host     = azurerm_public_ip.main.ip_address
     }
 
     inline = [
