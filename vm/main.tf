@@ -95,7 +95,7 @@ resource "azurerm_virtual_machine" "main" {
 
 resource "null_resource" "ansible" {
 
-  depends_on = [azurerm_virtual_machine.main]
+  depends_on = [azurerm_public_ip.main]
 
   provisioner "remote-exec" {
 
