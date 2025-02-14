@@ -13,14 +13,11 @@ components = {
 
   }
 
-  catalogue = {
-    name    = "catalogue"
-    vm_size = "Standard_DS1_v2"
-
-  }
-
-
-
+  # catalogue = {
+  #   name    = "catalogue"
+  #   vm_size = "Standard_DS1_v2"
+  #
+  # }
 
    # user = {
    #   name      = "user"
