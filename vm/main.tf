@@ -70,7 +70,7 @@ resource "azurerm_virtual_machine" "main" {
 
   storage_image_reference {
     id = "/subscriptions/8eb485d8-d144-4571-9bd5-df8df6c7d889/resourceGroups/project-setup/providers/Microsoft.Compute/galleries/azimage/images/az-image/versions/1.0.0"
-
+  }
 
   storage_os_disk {
     name              = var.component
