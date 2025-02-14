@@ -35,8 +35,8 @@ resource "azurerm_public_ip" "public" {
   name                = "${var.component}-ip"
   resource_group_name = data.azurerm_resource_group.rg.name
   location            = data.azurerm_resource_group.rg.location
-  allocation_method   = "Static"
-
+  allocation_method   = "Dynamic"
+  sku                 = "Basic"
 }
 
 
@@ -69,7 +69,7 @@ resource "azurerm_virtual_machine" "main" {
   delete_data_disks_on_termination = true
 
   storage_image_reference {
-    id = "/subscriptions/8eb485d8-d144-4571-9bd5-df8df6c7d889/resourceGroups/project-setup/providers/Microsoft.Compute/galleries/Azdevopspractice/images/devops-practice/versions/1.0.0"
+    id = "/subscriptions/7b6c642c-6e46-418f-b715-e01b2f871413/resourceGroups/trail1/providers/Microsoft.Compute/galleries/LDOTrail/images/rhel9-devops-practice/versions/04.12.2024"
   }
 
 
