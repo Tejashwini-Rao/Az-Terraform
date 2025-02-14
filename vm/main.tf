@@ -31,6 +31,7 @@ resource "azurerm_network_security_group" "main" {
   }
 
 
+
 resource "azurerm_public_ip" "main" {
   name                = "${var.component}-ip"
   resource_group_name = data.azurerm_resource_group.rg.name
